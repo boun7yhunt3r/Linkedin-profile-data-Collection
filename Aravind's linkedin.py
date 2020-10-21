@@ -1,7 +1,10 @@
 from selenium import webdriver
-from selenium.common.exceptions import TimeoutException, ElementNotInteractableException, \
-    ElementClickInterceptedException, NoSuchElementException, StaleElementReferenceException, \
-    MoveTargetOutOfBoundsException, InvalidSessionIdException
+from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import ElementNotInteractableException
+from selenium.common.exceptions import ElementClickInterceptedException
+from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import StaleElementReferenceException
+from selenium.common.exceptions import InvalidSessionIdException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
@@ -224,14 +227,14 @@ def test_startup(startup):
                 add_email(startup, first, last, first + '_' + last + '@' + startup["Startup Domain"], "Verified", titl)
                 email_types["Firstname_Lastname"] += 1
                 added = True
-            # if test_email(first + last[0] + '@' + startup["Startup Domain"]) == "Verified":
-            #     add_email(startup, first, last, first + last[0] + '@' + startup["Startup Domain"], "Verified")
-            #     email_types["FirstnameLastinitial"] += 1
-            #     continue
-            # if test_email(first[0] + last[0] + '@' + startup["Startup Domain"]) == "Verified":
-            #     add_email(startup, first, last, first[0] + last[0] + '@' + startup["Startup Domain"], "Verified")
-            #     email_types["FirstinitialLastinitial"] += 1
-            #     continue
+             if test_email(first + last[0] + '@' + startup["Startup Domain"]) == "Verified":
+               add_email(startup, first, last, first + last[0] + '@' + startup["Startup Domain"], "Verified")
+                 email_types["FirstnameLastinitial"] += 1
+                 continue
+             if test_email(first[0] + last[0] + '@' + startup["Startup Domain"]) == "Verified":
+                 add_email(startup, first, last, first[0] + last[0] + '@' + startup["Startup Domain"], "Verified")
+                 email_types["FirstinitialLastinitial"] += 1
+                 continue
             # if test_email(last + '.' + first + '@' + startup["Startup Domain"]) == "Verified":
             #     add_email(startup, first, last, last + '.' + first + '@' + startup["Startup Domain"], "Verified")
             #     email_types["Lastname.Firstname"] += 1
